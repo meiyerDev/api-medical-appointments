@@ -61,6 +61,13 @@ docker-compose exec -u "$(id -u):$(id -g)" app composer install
 cp .env.example .env
 ```
 6. Set your database config
+```
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USER=
+DB_PASSWORD=
+```
 8. Open in browser [adminer](http://localhost:9080)
 7. Create your databse and import the SQL file
 9. Test your API in Postman
