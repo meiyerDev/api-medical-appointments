@@ -20,6 +20,13 @@ composer install
 cp .env.example .env
 ```
 4. Set your database config
+```
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USER=
+DB_PASSWORD=
+```
 5. Create your databse and import the SQL file
 6. Start server:
 ```
