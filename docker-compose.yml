@@ -1,0 +1,50 @@
+# For more information: https://laravel.com/docs/sail
+version: "3"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api/php7.4-apache
+    ports:
+      - "8000:80"
+    volumes:
+      - ".:/var/www/html"
+    networks:
+      - apiphp_network
+    depends_on:
+      - mysql
+  mysql:
+    image: "mysql:8.0"
+    ports:
+      - "${FORWARD_DB_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_USER: "${DB_USER}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - "apiphp_mysql:/var/lib/mysql"
+    networks:
+      - apiphp_network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+      retries: 3
+      timeout: 5s
+  adminer:
+    image: adminer
+    ports:
+      - 9080:8080
+    environment:
+      ADMINER_DESIGN: "hydra"
+      ADMINER_DEFAULT_SERVER: mysql
+    networks:
+      - apiphp_network
+    depends_on:
+      - mysql
+networks:
+  apiphp_network:
+    driver: bridge
+volumes:
+  apiphp_mysql:
+    driver: local

@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "cbdac1c9-5db5-4325-9095-7e5348678765",
+		"name": "API REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Patient SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Meiyer Jaimes",
+									"description": "Nombre del usaurio",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "meiyer.patient.6@gmail.com",
+									"description": "Correo del usuario",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"description": "Contraseña del usaurios",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/register/patient",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register",
+								"patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Doctor SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Meiyer Jaimes",
+									"description": "Nombre del usaurio",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "meiyer.doctor@gmail.com",
+									"description": "Correo del usuario",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"description": "Contraseña del usaurios",
+									"type": "text"
+								},
+								{
+									"key": "branch_id",
+									"value": "1",
+									"description": "Rama de especializacion del medico",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/register/doctor",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register",
+								"doctor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "meiyer.doctor@gmail.com",
+									"description": "Email de usuario",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"description": "Contraseña de usuario",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Branches",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/branches",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"branches"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dates",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "branch_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "date_at",
+									"value": "2022-01-26",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/dates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by auth",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/dates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"dates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by branch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/dates/not-confirmed",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dates",
+								"not-confirmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List by auth and Date (Doctor)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/dates/today",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"dates",
+								"today"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm dates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "date_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/dates/confirm",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dates",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/public",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
